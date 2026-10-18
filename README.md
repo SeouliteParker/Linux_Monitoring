@@ -317,14 +317,14 @@ DISK Used : 1%
 
 ### 임계값 경고 동작 검증
 
-실제 값이 임계값 아래라 경고가 뜨지 않아서, 임계값을 1%로 낮춘 **복사본**으로 테스트했다 (원본은 수정하지 않았고 복사본은 삭제함).
+실제 값이 임계값 아래라 경고가 뜨지 않아서, 임계값을 낮춘 **복사본**으로 테스트했다 (CPU/MEM은 1%, DISK는 0%로 설정. 원본은 수정하지 않았고 복사본은 삭제함).
 
 ```
 [WARNING] CPU threshold exceeded (4.9% > 1%)
 [WARNING] MEM threshold exceeded (5.9% > 1%)
 ```
 
-DISK 경고는 CPU/MEM과 같은 구조의 비교문이지만 별도로 발생시켜 보지는 않았다.
+[WARNING] DISK threshold exceeded (1% > 0%)
 
 ---
 
