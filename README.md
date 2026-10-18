@@ -325,6 +325,32 @@ DISK Used : 1%
 [WARNING] DISK threshold exceeded (1% > 0%)
 ```
 
+### 비정상 상태 검증 (exit 1)
+
+Health Check 실패 시 `exit 1`로 종료되는지 확인하기 위해, 값을 틀리게 바꾼 **복사본**으로 실행했다 (원본은 수정하지 않았고 복사본은 삭제함).
+
+- 프로세스 이름을 존재하지 않는 `no-such-app`으로 변경
+- 포트를 열려 있지 않은 `15099`로 변경
+
+```
+$ sudo -u agent-admin /tmp/t_proc.sh; echo "exit=$?"
+====== SYSTEM MONITOR RESULT ======
+
+[HEALTH CHECK]
+Checking process 'no-such-app'... [FAIL]
+exit=1
+
+$ sudo -u agent-admin /tmp/t_port.sh; echo "exit=$?"
+====== SYSTEM MONITOR RESULT ======
+
+[HEALTH CHECK]
+Checking process 'agent-app-linux-x86'... [OK] (PID: 6479)
+Checking port 15099... [FAIL]
+exit=1
+```
+
+프로세스/포트 어느 쪽이 비정상이어도 `[FAIL]`을 출력하고 `exit 1`로 종료되며, 이 경우 `monitor.log`에는 기록하지 않는다.
+
 ---
 
 ## 6. cron 자동 실행 및 로그 관리
