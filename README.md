@@ -322,9 +322,8 @@ DISK Used : 1%
 ```
 [WARNING] CPU threshold exceeded (4.9% > 1%)
 [WARNING] MEM threshold exceeded (5.9% > 1%)
-```
-
 [WARNING] DISK threshold exceeded (1% > 0%)
+```
 
 ---
 
